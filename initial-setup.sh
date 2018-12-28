@@ -5,15 +5,6 @@ read -p "Enter your email? " email
 echo "Hi, $name"
 echo "You email is $email"
 
-fancy_echo() {
-  LightBlue='\033[0;34m'
-  NC='\033[0m' # No Color
-  local fmt="$1"; shift
-
-  # shellcheck disable=SC2059
-  printf "\\n${LightBlue}$fmt${NC}\\n" "$@"
-}
-
 echo "Installing xcode-stuff"
 xcode-select --install
 
@@ -49,6 +40,19 @@ ssh-keygen -t rsa -C $email
 echo "Installing homebrew cask"
 brew install caskroom/cask/brew-cask
 
+echo "Installing brew git utilities..."
+brew install git-extras
+brew install legit
+brew install git-flow
+brew install findutils
+
+echo "Installing other brew stuff..."
+brew install tree
+brew install wget
+brew install trash
+brew install svn
+brew install mackup
+
 #Install Zsh & Oh My Zsh
 echo "Installing Oh My ZSH..."
 curl -L http://install.ohmyz.sh | sh
@@ -65,3 +69,13 @@ echo "Setting ZSH as shell..."
 chsh -s /bin/zsh
 
 echo "Please restart terminal to continue with zsh"
+
+# usgae - fancy_echo "Hi"
+fancy_echo() {
+  LightBlue='\033[0;34m'
+  NC='\033[0m' # No Color
+  local fmt="$1"; shift
+
+  # shellcheck disable=SC2059
+  printf "\\n${LightBlue}$fmt${NC}\\n" "$@"
+}
