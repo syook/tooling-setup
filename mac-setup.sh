@@ -1,19 +1,8 @@
-echo "Installing Git..."
-brew install git
-
-echo "Git config"
-git config --global color.ui true
-git config --global user.name $name
-git config --global user.email $email
-
-echo "Creating an SSH key for you..."
-ssh-keygen -t rsa -C $email
-
 echo "Installing brew git utilities..."
 brew install git-extras
 brew install legit
 brew install git-flow
-bew install findutils
+brew install findutils
 
 echo "Installing other brew stuff..."
 brew install tree

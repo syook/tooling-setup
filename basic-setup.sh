@@ -22,6 +22,17 @@ brew update
 echo "Cleaning up brew"
 brew cleanup
 
+echo "Installing Git..."
+brew install git
+
+echo "Git config"
+git config --global color.ui true
+git config --global user.name $name
+git config --global user.email $email
+
+echo "Creating an SSH key for you..."
+ssh-keygen -t rsa -C $email
+
 # Tap the Caskroom/Cask repository from Github using HTTPS.
 echo "Installing homebrew cask"
 brew install caskroom/cask/brew-cask
