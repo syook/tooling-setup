@@ -50,20 +50,15 @@ PACKAGES=(
   google-chrome
   iterm2
   # libreoffice
-  mongodb
-  postgresql
-  redis
   slack
   visual-studio-code
   # vlc
 )
 
-fancy_echo "Installing packages..."
-brew install ${PACKAGES[@]}
-
-fancy_echo "Cleaning up..."
-brew cleanup -s
-
+# fancy_echo "Installing packages..."
+# brew install ${PACKAGES[@]}
+# fancy_echo "Cleaning up..."
+# brew cleanup -s
 
 fancy_echo "Installing cask apps..."
 brew cask install ${PACKAGES[@]}
@@ -73,7 +68,14 @@ brew cask install ${PACKAGES[@]}
 # echo "installing apps with Cask..."
 # brew cask install --appdir="/Applications" ${apps[@]}
 
+
+# Databases
+brew install postgresql
+brew install mongodb
+brew install redis
+
 # Launch on computer start
+brew services restart postgresql
 brew services start redis
 brew services start mongodb
 
