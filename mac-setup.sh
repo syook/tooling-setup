@@ -1,3 +1,12 @@
+fancy_echo() {
+  LightBlue='\033[0;34m'
+  NC='\033[0m' # No Color
+  local fmt="$1"; shift
+
+  # shellcheck disable=SC2059
+  printf "\\n${LightBlue}$fmt${NC}\\n" "$@"
+}
+
 echo "Installing brew git utilities..."
 brew install git-extras
 brew install legit
@@ -43,10 +52,20 @@ apps=(
   # vlc
 )
 
-# Install apps to /Applications
-# Default is: /Users/$user/Applications
-echo "installing apps with Cask..."
-brew cask install --appdir="/Applications" ${apps[@]}
+fancy_echo "Installing packages..."
+brew install ${PACKAGES[@]}
+
+fancy_echo "Cleaning up..."
+brew cleanup -s
+
+
+fancy_echo "Installing cask apps..."
+brew cask install ${CASKS[@]}
+
+# # Install apps to /Applications
+# # Default is: /Users/$user/Applications
+# echo "installing apps with Cask..."
+# brew cask install --appdir="/Applications" ${apps[@]}
 
 # Launch on computer start
 brew services start redis

@@ -5,6 +5,15 @@ read -p "Enter your email? " email
 echo "Hi, $name"
 echo "You email is $email"
 
+fancy_echo() {
+  LightBlue='\033[0;34m'
+  NC='\033[0m' # No Color
+  local fmt="$1"; shift
+
+  # shellcheck disable=SC2059
+  printf "\\n${LightBlue}$fmt${NC}\\n" "$@"
+}
+
 echo "Installing xcode-stuff"
 xcode-select --install
 
