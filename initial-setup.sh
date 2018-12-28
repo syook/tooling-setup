@@ -1,9 +1,20 @@
 #!/bin/bash
-read -p "Enter your name? " name
-read -p "Enter your email? " email
 
-echo "Hi, $name"
-echo "You email is $email"
+read -p "Enter your name -> " name
+if [ -z "$name" ]; then
+  echo "$(tput setaf 1)\n Please enter your name"
+  exit 1
+else
+  echo "Hi, $name"
+fi
+
+read -p "Enter your email -> " email
+if [ -z "$email" ]; then
+  echo "$(tput setaf 1)\n Please enter your email"
+  exit 1
+else
+  echo "You email is $email"
+fi
 
 echo "Installing xcode-stuff"
 xcode-select --install
@@ -69,13 +80,3 @@ echo "Setting ZSH as shell..."
 chsh -s /bin/zsh
 
 echo "Please restart terminal to continue with zsh"
-
-# usgae - fancy_echo "Hi"
-fancy_echo() {
-  LightBlue='\033[0;34m'
-  NC='\033[0m' # No Color
-  local fmt="$1"; shift
-
-  # shellcheck disable=SC2059
-  printf "\\n${LightBlue}$fmt${NC}\\n" "$@"
-}
