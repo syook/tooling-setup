@@ -31,6 +31,10 @@ git config --global user.name $name
 git config --global user.email $email
 
 echo "Creating an SSH key for you..."
+echo "Just press enter for all the inputs"
+ssh-keygen -t rsa -C $email
+echo "Enter file to save as below"
+echo "$(tput setaf 3)\n ~/.ssh/id_rsa_sparkyo"
 ssh-keygen -t rsa -C $email
 
 # Tap the Caskroom/Cask repository from Github using HTTPS.
