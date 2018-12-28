@@ -43,7 +43,7 @@ nvm use v8.9.4
 
 
 # Apps
-apps=(
+PACKAGES=(
   evernote
   # filezilla
   # firefox
@@ -66,7 +66,7 @@ brew cleanup -s
 
 
 fancy_echo "Installing cask apps..."
-brew cask install ${CASKS[@]}
+brew cask install ${PACKAGES[@]}
 
 # # Install apps to /Applications
 # # Default is: /Users/$user/Applications
