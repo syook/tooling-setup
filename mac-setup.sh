@@ -13,17 +13,18 @@ brew install mackup
 
 
 echo "Install nvm"
-curl https://raw.github.com/creationix/nvm/master/install.sh | sh
-# brew install nvm
-echo "source ~/.nvm/nvm.sh" >> ~/.zshrc
-# echo "export NVM_DIR="$HOME/.nvm"" >> ~/.zshrc
-# echo "[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"" >> ~/.zshrc # This loads nvm
-# activate configuration
-source ~/.zshrc
-
+# curl https://raw.github.com/creationix/nvm/master/install.sh | sh
+brew install nvm
 echo "Installing node"
 nvm install v8.9.4
 nvm use v8.9.4
+
+echo "export NVM_DIR="$HOME/.nvm"" >> ~/.zshrc
+# echo "[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"" >> ~/.zshrc # This loads nvm
+# activate configuration
+# echo "source ~/.nvm/nvm.sh" >> ~/.zshrc
+source ~/.zshrc
+
 
 
 # Apps
